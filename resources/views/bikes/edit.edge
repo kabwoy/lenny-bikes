@@ -1,0 +1,47 @@
+@include('partials/head')
+
+<body>
+@include('partials/navbar')
+<div class="flex items-center w-[30%] ml-[40%] justify-center m-auto p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+    <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+    </svg>
+    <span class="sr-only">Info</span>
+    <div>
+      <span class="font-medium" >Update Bikes</span> 
+    </div>
+  </div>
+<form method="post" action="/bikes/{{bike.id}}?_method=PATCH" class="ml-[40%]">
+    <div>
+    <div class="mb-6">
+      <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bike Name</label>
+      <input type="text" id="name" value="{{bike.name}}" name="name" class=" w-[48%] shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"required>
+    </div>
+    <div class="mb-6">
+      <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">description</label>
+      <textarea type="text" id="description" name="description" class="w-[48%] shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required>{{bike.description}}</textarea>
+    </div>
+    <div class="mb-6">
+        <label for="type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type</label>
+        <input type="text" value="{{bike.type}}" id="type" name="type" class="w-[48%] shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required>
+      </div>
+      <div class="mb-6">
+        <label for="image_url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">imageUrl</label>
+        <input type="text" id="image_url" value="{{bike.image_url}}" name="image_url" class="w-[48%] shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required>
+      </div>
+    <div class="mb-6">
+      <label for="repeat-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+      <select name="status"  class="w-[48%] shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" name="" id="">
+        <option {{bike.status === 'FREE' ? selected : ''}} value="FREE">FREE</option>
+        <option  {{bike.status === 'BOOKED' ? selected : ''}}  value="BOOKED">BOOKED</option>
+      </select>
+      {{--  <input type="password" id="repeat-password" class=" w-[50%] shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required>  --}}
+    </div>
+    
+    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update Bike</button>
+    </div>
+
+  </form>
+  
+   
+</body>
