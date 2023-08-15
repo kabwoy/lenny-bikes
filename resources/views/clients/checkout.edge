@@ -1,0 +1,195 @@
+@include('partials/head')
+
+<body>
+    @include('partials/navbar')
+
+    @if(flashMessages.has('booked'))
+    <p class="text-4xl ml-4 text-red-500">{{flashMessages.get('booked')}}</p>
+    @end
+    <div class="py-16 px-4 md:px-6 2xl:px-0 flex justify-center items-center 2xl:mx-auto 2xl:container">
+        <div class="flex flex-col justify-start items-start w-full space-y-9">
+            <div
+                class="flex flex-col xl:flex-row justify-center xl:justify-between space-y-6 xl:space-y-0 xl:space-x-6 w-full">
+                <div
+                    class="xl:w-3/5 flex flex-col sm:flex-row xl:flex-col justify-center items-center bg-gray-100 dark:bg-gray-800 py-7 sm:py-0 xl:py-10 px-10 xl:w-full">
+                    <div class="flex flex-col justify-start items-start w-full space-y-4">
+                        <p class="text-xl md:text-2xl leading-normal text-gray-800 dark:text-gray-50">{{bike.name}}</p>
+                        <p class="text-base font-semibold leading-none text-gray-600 dark:text-white">Ksh1500.00</p>
+                    </div>
+                    <div class="mt-6 sm:mt-0 xl:my-10 xl:px-20 w-52 sm:w-96 xl:w-auto">
+                        <img src="{{bike.image_url}}" alt="bike" />
+                    </div>
+                </div>
+
+                @if(flashMessages.has('completed'))
+                @!component('components/toast' , {
+                    title:flashMessages.get('completed')
+                })
+                @end
+
+                <div class="p-8 bg-gray-100 dark:bg-gray-800 flex flex-col lg:w-full xl:w-3/5">
+                    {{--  <button
+                        class="border border-transparent hover:border-gray-300 bg-gray-900 dark:bg-white dark:hover:bg-gray-900 dark:hover:border-gray-900 dark:text-gray-900 dark:hover:text-white hover:bg-white text-white hover:text-gray-900 flex flex-row justify-center items-center space-x-2 py-4 rounded w-full">
+                        <div>
+                            <svg class="fill-current" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10.9099 4.27692C9.6499 4.27692 9.1174 4.87817 8.2399 4.87817C7.34021 4.87817 6.65396 4.28129 5.56208 4.28129C4.49333 4.28129 3.35365 4.93379 2.6299 6.04535C1.61365 7.61285 1.78615 10.565 3.43208 13.08C4.02083 13.9804 4.80708 14.99 5.83833 15.001H5.85708C6.75333 15.001 7.01958 14.4141 8.25302 14.4072H8.27177C9.48677 14.4072 9.73052 14.9975 10.623 14.9975H10.6418C11.673 14.9866 12.5015 13.8679 13.0902 12.971C13.514 12.326 13.6715 12.0022 13.9965 11.2725C11.6155 10.3688 11.233 6.99348 13.5877 5.69942C12.869 4.79942 11.859 4.27817 10.9068 4.27817L10.9099 4.27692Z"
+                                    fill="currentColor" />
+                                <path
+                                    d="M10.6338 1C9.88379 1.05094 9.00879 1.52844 8.49629 2.15188C8.03129 2.71688 7.64879 3.555 7.79879 4.36781H7.85879C8.65754 4.36781 9.47504 3.88688 9.95254 3.27063C10.4125 2.68406 10.7613 1.85281 10.6338 1V1Z"
+                                    fill="currentColor" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-base leading-4">Pay</p>
+                        </div>
+                    </button>  --}}
+
+                    <div class="flex flex-row justify-center items-center mt-6">
+                        <hr class="border w-full" />
+                        <p class="flex flex-shrink-0 px-4 text-base leading-4 text-gray-600 dark:text-white">pay with
+                            M-Pesa</p>
+                        <hr class="border w-full" />
+                    </div>
+                    <div class="flex flex-row justify-center items-center mt-6">
+                        <hr class="border w-full" />
+                        <p class="flex flex-shrink-0 px-4 text-base leading-4 text-gray-600 dark:text-white">User Info</p>
+                        <hr class="border w-full" />
+                    </div>
+                    <div class="mt-8">
+                        <input
+                            class="border border-gray-300 p-4 rounded w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+                            type="email" name="" id="" value="{{auth.user.email}}"/>
+                    </div>
+
+                    <label class="mt-8 text-base leading-4 text-gray-800 dark:text-gray-50">Contact Number</label>
+                    <div class="mt-2 flex-col">
+                        <div>
+                            <input
+                                id="contact"
+                                class="border rounded border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+                                type="text" name="contact" id="" value="{{auth.user.contact}}" />
+                        </div>
+                    </div>
+                    <form action="/client/rent/{{bike.id}}" method="post">
+                    <label class="mt-8 text-base leading-4 text-gray-800 dark:text-gray-50" >Start Date</label>
+                    <div class="mt-2 flex-col">
+                        <input
+                            class="border rounded-bl rounded-br border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+                            type="date" name="rental_start" id="rental_start" min="2023-08-14"  />
+                    </div>
+
+                    <label class="mt-8 text-base leading-4 text-gray-800 dark:text-gray-50">End Date</label>
+                    <div class="mt-2 flex-col">
+                        <input
+                            class="border rounded-bl rounded-br border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600"
+                            type="date" name="rental_end" id="rental_end" min="2023-08-14"/>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="price-btn"
+                        data-modal-target="popup-modal" data-modal-toggle="popup-modal" 
+                        class="mt-8 border border-transparent hover:border-gray-300 dark:bg-white dark:hover:bg-gray-900 dark:text-gray-900 dark:hover:text-white dark:border-transparent bg-gray-900 hover:bg-white text-white hover:text-gray-900 flex justify-center items-center py-4 rounded w-full">
+                        <div>
+                            <p class="text-base  leading-4">Pay ksh <span id="price">0</span></p>
+                        </div>
+                    </button>
+                    <div id="popup-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative w-full max-w-md max-h-full">
+                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <button  type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="popup-modal">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                    </svg>
+                                    <span class="sr-only">Close modal</span>
+                                </button>
+                                <div class="p-6 text-center">
+                                    <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                                    </svg>
+                                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to proceed with the transaction? </h3>
+                                    
+                                    <button type="submit" id="pay-rent" data-modal-hide="popup-modal"  type="button" class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                                        Pay ksh<span id="price-modal">1500</span>
+                                    </button>
+                                </form>
+                                    <button data-modal-hide="popup-modal" type="button"  class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="text" id="bikeId" value="{{bike.id}}" hidden >
+                    <input type="text" id="userId" value="{{auth.user.id}}" hidden>
+                    <p class="mt-2 flex gap-2 ml-4 text-green-500 text-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                      </svg>
+                       An Stk push will be sent on your phone please check</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+<script>
+    const rental_start = document.getElementById("rental_start")
+    const price_btn = document.getElementById("price-btn")
+    const pay_rent = document.getElementById("pay-rent")
+    const price_modal = document.getElementById("price-modal")
+    const rental_end = document.getElementById("rental_end")
+    const price = document.getElementById("price")
+    const test = document.getElementById("test")
+    const bikeId = document.getElementById("bikeId").value
+    const userId = document.getElementById("userId").value
+    const contact = document.getElementById("contact").value
+
+
+
+    rental_start.addEventListener("input" , (event)=>{
+         const startDate= moment(event.target.value);
+         rental_end.addEventListener("input" , (e)=>{
+            const endDate= moment(e.target.value);
+            const daysPrice = endDate.diff(startDate , 'days') * 1500
+            if(daysPrice<=0){
+                price.textContent = 1500
+                price_modal.textContent = 0
+                // price_btn.disabled = true
+                // price_modal.disabled = true
+              
+            }
+                price.textContent = daysPrice
+                price_modal.textContent = daysPrice
+    })
+    })
+
+    const today = new Date().toISOString().split('T')[0];
+    rental_start.min = today;
+
+    const today2 = new Date().toISOString().split('T')[0];
+    rental_end.min = today2;
+    const url = `http://localhost:3333/client/rent/${bikeId}`
+    // pay_rent.addEventListener("click" , (e)=>{
+    //     fetch(url , {
+    //         method:"POST",
+    //         body:{
+    //             bike_id:bikeId,
+    //             user_id:userId,
+    //             rental_start:rental_start.value,
+    //             rental_end:rental_end.value,
+    //             price:price.textContent,
+    //             contact:contact
+    //         },
+    //         headers:{
+    //             'Content-Type':'application/json'
+    //         }
+    //     }).then((response)=>{
+    //         return response.json()
+    //     }).then((data)=>{
+    //         console.log(data)
+    //     }).catch((e)=>console.error(e))
+    // })
+    
+
+</script>

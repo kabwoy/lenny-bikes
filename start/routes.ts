@@ -17,15 +17,20 @@
 | import './routes/customer''
 |
 */
+import Env from "@ioc:Adonis/Core/Env"
 import './bikes/routes'
 import './auth/auth'
+import './clients/routes'
+import './rentals/routes'
 import Route from '@ioc:Adonis/Core/Route'
+import Database from '@ioc:Adonis/Lucid/Database'
 
-Route.get('/', async ({ view }) => {
-  return view.render('home' , {name:"Edward"})
+Route.get('/', async ({ view  , session}) => {
+  const bikes = await Database.from('bikes').paginate(1,3)
+  return view.render('home' , {bikes:bikes})
 })
 
-Route.get('/test', async ({ view }) => {
-  return view.render('test')
+Route.get('/unauthorized', async ({ view }) => {
+  return view.render('errors/unauthorized')
 })
 

@@ -1,10 +1,12 @@
 import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
-import { column, beforeSave, BaseModel } from '@ioc:Adonis/Lucid/Orm'
+import { column, beforeSave, BaseModel, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
+import Rental from './Rental'
+import Payment from './Payment'
 
 enum Roles{
   CUSTOMER = "CUSTOMER",
-  ADMIN = "CUSTOMER" 
+  ADMIN = "ADMIN" 
 }
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -25,6 +27,12 @@ export default class User extends BaseModel {
   @column()
   public contact: string
 
+  @hasMany(()=> Rental)
+  public rental:HasMany<typeof Rental>
+
+  @hasMany(()=>Payment)
+  public payment:HasMany<typeof Payment>
+  
   @column({})
   public role: Roles
   

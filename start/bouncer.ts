@@ -6,6 +6,7 @@
  */
 
 import Bouncer from '@ioc:Adonis/Addons/Bouncer'
+import User from 'App/Models/User'
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,16 @@ import Bouncer from '@ioc:Adonis/Addons/Bouncer'
 | NOTE: Always export the "actions" const from this file
 |****************************************************************
 */
+enum Roles{
+    ADMIN = 'ADMIN',
+    CUSTOMER = 'CUSTOMER'
+}
 export const { actions } = Bouncer
+.define('viewDashBoard' , (user:User)=>{
+
+    return user.role == 'ADMIN';
+
+})
 
 /*
 |--------------------------------------------------------------------------

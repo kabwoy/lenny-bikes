@@ -2,7 +2,6 @@
 
 <body>
     @include('partials/navbar')
-
     <section>
         <div class="px-4 py-12 mx-auto max-w-7xl sm:px-6 md:px-12 lg:px-24 lg:py-24">
           <div class="justify-center mx-auto text-left align-bottom transition-all transform bg-white rounded-lg sm:align-middle sm:max-w-2xl sm:w-full">
@@ -15,22 +14,29 @@
                     </div>
                   </div>
                 </div>
-      
+                <form action="/login" method="post">
                 <div class="mt-6 space-y-2">
                   <div>
                     <label for="email" class="sr-only">Email</label>
                     <input type="text" name="email" id="email" class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300" placeholder="Enter your email">
+                    @if(flashMessages.has('invalid_email'))
+                        <p class="text-sm ml-4 text-red-500">{{flashMessages.get('invalid_email')}}</p>
+                    @end
                   </div>
                   <div>
                     <label for="password" class="sr-only">Password</label>
                     <input type="text" name="password" id="password" class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300" placeholder="Enter your password">
+                    @if(flashMessages.has('invalid_password'))
+                      <p class="text-sm ml-4 text-red-500">{{flashMessages.get('invalid_password')}}</p>
+                    @end
                   </div>
                   <div class="flex flex-col mt-4 lg:space-y-2">
-                    <button type="button" class="flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Login</button>
+                    <button type="submit" class="flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Login</button>
                     <a href="#" type="button" class="inline-flex justify-center py-4 text-base font-medium text-gray-500 focus:outline-none hover:text-neutral-600 focus:text-blue-600 sm:text-sm"> Forgot your Password? </a>
                   </div>
                 </div>
               </div>
+            </form>
               <div class="order-first hidden w-full lg:block">
                 <img class="object-cover h-full bg-cover rounded-l-lg" src="https://images.unsplash.com/photo-1572111504021-40abd3479ddb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGJpY3ljbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="">
               </div>

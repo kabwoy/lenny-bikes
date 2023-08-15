@@ -1,3 +1,3 @@
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.resource("/bikes" , 'BikesController');
+Route.resource("/bikes" , 'BikesController').middleware({'*':'auth'});
