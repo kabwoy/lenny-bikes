@@ -9,3 +9,5 @@ Route.post("/callback" , ({request , response}:HttpContextContract)=>{
     console.log(request.body().Body.stkCallback.MerchantRequestID);
     
 })
+
+Route.resource("/rentals" , 'RentalsController')

@@ -1,0 +1,182 @@
+<nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+   <div class="px-3 py-3 lg:px-5 lg:pl-3">
+     <div class="flex items-center justify-between">
+       <div class="flex items-center justify-start">
+         <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+             <span class="sr-only">Open sidebar</span>
+             <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+             </svg>
+          </button>
+         <a href="#" class="flex ml-2 md:mr-24">
+           <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJkAAACZCAMAAAALgmiIAAAAb1BMVEX////u7u4AAADt7e3s7Oz09PT4+Pj8/Pzw8PAEBATo6Ojl5eXZ2dnU1NTh4eGsrKzFxcWysrLLy8t5eXmUlJRKSkqhoaFbW1u6uro/Pz+JiYlFRUVsbGwtLS1iYmJTU1MmJiY1NTUUFBQbGxuBgYHQrJ/nAAAOWUlEQVR4nO1ciXKjuhIVi5DMvoMxZjH8/ze+7hZrbCd2Er9M3bJmKlORBTq0uk9veJg2D1OweXBjmjP4MifMZeEyx+Q8Z1jLnDVfrMl1ofn0Lhp7I3sjeyN7I3sRsmXDlyJbLtaYOQ1je808aW6fxpgW2uuG2rJwg2yZ09aF9rO7mCYTy5DLsJY5a51cFxrzlLYu5Ms6vl6szXPGN3ZZH+uVSvMdBXgjeyN7I3sj+z4yYxo7Qp8nt8iWhVtCn+d2hD5PfmMXxpdhLYN/Pvn5wh9dvJlkxi0BLJM3BKB9RwA3xfzZLobxX4iC3sjeyN7I/q/InuazbxH6d/js3/UBvyWA3/ebm2tepzT/3SjojezvkTGVs+8N7a+RCYsbpuN6nhfHYViWq9BwyR8iE5YEWHEU5GlaVWPSeHHbJLkHF1A95M9Pc6FQmKt1GMfK5dJ4ENkLa0FiqQVJZlX6AbHpoz8v/aoW9IL6GfC7+dFtkMho9PEju5jmC2qOGwHMvlD4pwWZfinhbl/u8otRkKU5bhyWUZ5W45gkNYymKNo2y/pzYGYzrsOBoH25y3eRTWsl+Gc1Z4HCWlzC8TouDMUWCDTIwT5Du9U3Y+CvQ7bKDHVKbk9TALdOBLsudLItMj16ObIZAlgprUHFMhzHp1OWK1o2HnbIklciE8iloFVKrVCp2ux0OnfdBU5LSIvbqHVlFJVlGTSkX0rP8EfDXykzkA+3Hd93fdQrUi7UrbAMgog5wdj2F/3W6OBgi19Fdps15MSbmyK55UczRxzIGA/69iwDFo7u17usnQrT/oJp7WXhCkIjijZ3oTNPe0UOh2t54Qjpbl/usnl+trDvdUMEPtoQuiFn/7QRlEb+gLvVTTgHRWWobIlxbxfciN0an3l0uBtQOcgGNSuOlUKVoN1RQISVJhHXpCbK001gyGE9CfKcRvLuLt+JNQzH9RVvQliDBI/0np2y7HQ89v25G/TU0rhfrzb4YaSM+WChegWB2+9GQduTI60HKdo2MJlJYnRjV3Kv0K+QqWPUBw+vA0cQA7CXRo5TFLTOWZKH3b2TPOi9j1rvF8EfRNsy7u6dJIxMOVvxu3mAfAiZf7ynY8NF11tJyMB//bbMDLpG0L1nZBBYrF1IkVydoBptNcIpt9ojuzyHDLTpI3cZZAIc/szABLOHK1ldhqGDyIx7gOzo/ATZzdDZdtDyMD1TP4HJ4igiFgMCISqrqioR8RWwBBZ7JpginnPnLsju87m5a3CzJTS+nW5wFagGGFIoHmuRw4DBhuFyWWAYnv7RG1U+5XcQGdXwUaSCcG2Tgnze4JYPe3Q2VbekpN47ECbIGMRCviCSvNeviKzNPbpnCr/WAlIWTRW2Ju38YayxqriJNzbMXayxFOI0kd+ygK4p4cxcNFBXLSRFEmEei1+IgtS8WBaS11UvB2CZDiINDfPEj678oDjkFFnsCDgv7QhqSdo5gi/oYvHyCrKpcc12OBPpliy2pmB9lCcuO6dSvhiZlAHudU48v76mDhytXDOn4VSMNUHrvJcjc+bIJ7e8q+iMAkiXsOunJAcrTyNBQM/ui5EZhkyBVM89IPDr1PfyOjt/ONOUhZ5jmcF4pF8LMxyLorS01yJDJghDyFBAEHmsd3UeO44XIwV2s9hyCJwMvpJxV5Vx/L1OxTMldMyEJRA6nNhJFKRLxwTScuHNWtfZkG1ohg0f9kkaeS7aSvbFLgZ7tHMwTwhhbcbK6FYMzOAFi1g8VcqAc+1DQVej8baQDAoGDgOo94vmBtsL4FYPQSVM5nwLKX3KMNGJLllmGdgaGEJlHyfe8EQzYcxcCHzpZiEYpAPXl5hcRXK/y5OdCmGC+4kiDP6pvtM0BXhNCvyHy17LfTHCcWrpZKZsttLG53Oobp/1Q2mFNWJvbPnDKAgSOhIaxfwYeICQlKuknAmLsHWNxSifhygq94xwRnRW5ANG8FwmXBTmY3GEiVRx29GU5q9Ejvv4TC4Ksc4J4DWwxQoiSIj6WTkxWVrmY90uCcJBbw0QbZ+b8tfyAGOJae9XkIHbM+SG3vfOKksP0pXZpqTdNcvQ5vLHMe1sQHNYDcGPPXMOviS4QWZIOMGL63eQuR3oKIdwVrZDXQWn2VGgERk/QcZtHwmTylCg+0UGaS/mva1tSCreGfYkM4QNas6BwA7NUc+NgsRz9CA3uHTtGHi+JRKwmAZOsrFUV4VKbuJbyCyJVK70XBXIANyxHzJTWk6YJi3AbGBXThugzKyTckXNZJRpUUWxI4FsJMcEprbcQT9TAyOPQv8JZDf4TKjnw4AFNwA5OQ5z09NKGUMbIFtxU/ISNT3hijgg9DBNTGXQfHhDnzD05b2yh6FvohnHbT57pkctkMDtq2jrEGHT2yREIwZjaJThUIn5SgfjnsRygnZPgkPqs7vN7Of8Jjjf+Djd9tjUTT85oNZluPtBr5HVEFgwAJXND08Sk3n/8ZFAgJC5mHf85uLbH4g1pMYD2rhLQiV3s6wvNJF2VL4o1IYlLitV1445yK2ju0SPhev4YdKpZ9ITW5o/j4KkFdG9a89ayM0KpxM6KGAY/tcezJ1sBZ7ij8o7qyvBEhq4CIwrDOhhQP3kE8jgNyXSXRvVUBI7bguVeLdqKmgc/UHlJXkMyDxLYh7j4xmmMfLsAc4XmGVY0t2Q4DZPyYzK/BDvTITFsYsqOTnFxGbrW9VC2r7rdQTo7Ena/0AhRwPWikeJsVCqoVy7EmsiADRWbGHFqRJkyp5A5nshRBhAsO2pv0ztP0nOOMEzBCu1NWF7ZY4VyMkmahCCYoQzS/QcHk8wH/dOBVLvyaYyVauQOGWSZW1RUw8vfOI0bQi7qAgbAM3WRQYkVPEIIDbXXBhnqgqLdUVP1arcUC8BGXMRdM6QZ3pXiRocVgL/2L6jceShiih4PoRHTlO1beYLsCkhEYHPxAYUZLM+hrFDjKdUC2aEIx5cw48lKLbXEzADhe6pO0f9VOZbboHHXbKHkSnLRNtcnobir5StE34YVEmBwf4xZhj3XBxmZlWEtpiHIecxHmUgSGSjagFEeXiCoBxDA8dF35dWWBApbp3mF7WgTaAPBt9jl2JGBo7KMNEfntEIrRrFA4GtGwbNoCMwVLqAWRq6JF9do44zgNN0pwpTVaHQbHZdC1rH51/dkKLHwHD3XQfGUYFrVekEobWcR5cYHGKYB0wBg61Q1hVbkJXEaJuBOVYgjav62To+rwZyt1P6gA1WQ0VIAT5uosAKCGnPPvfOUaN3p9EPBwXM4Dkclzffj/s58MtyeOgzzRaDcrXLE5GjnJyssCDzGRxApin9gHOg0mwqII0J87RG+4i5CTnBEQ7pQp4eY1eS63w7L68qiJV8BowTpGD1bXYeiG2v6tQ3kBmGpXJKyEg8SEZQG5LaBMfU747Sxq5lwIRLLek8L9BVSrM8Hc59BnZwCTm52kyfhSQw+sBgJAfBqw4Hih40L3MeQGb4kD2mCXDYNmS5mJSDr8JkNpxuF26uT1FIVqnWd1ETYsvYMB3gtIJxPy7zqi5OquZRbjf24c7+IzLTbA0eHZ4IHyhAebXZ8ejskVElsYtVkX9BVnIsDJGHyky/TMekyfITqrxFd6RiNJpGvt3YeRCZITd6xkjFLHAKHE/T2vCsVdXzOyFYtuW80i8lBiMHlWp6QE74eFjabncbRVmy6ZGC03/wNK8zYdQWydEC7N0F0zLLhcMHB9uBBWzKi2DHBgWpYHrDznMweh8ADIfcLqQXj1rADpkmp8ovh3QNXO/ON22vFvZZ750pgFNu2iIrDkayzf1iQT8EvuDhYzT8OWvc6gkzzZ76mg4ybboHttsNQrCMS2/JxzXwXy7YdoiONWa7sedrcGcBv+4J3+mjexGY57HvFvv0rXHyTh82AeKlPkutXhApp6p2xKcGt0CwBb+6cBkYFM8fb/voiwfdJdyQRIMIlTGBzIK80sijB/Sx7cbq/Z+pqdKfO+ynHKi5RDWoIbIFhNRRPoJxIu8RTQgT4r5yqdWo9zyQoovHYw0TM0z06GxzDaoybg6xj01FIS/Edjq2ofL0ghUgXFvGcanntV4HMZ2bhWLUB2pwYlkQbm4iIYXUg09TuOslfiIKUu/PaJsInfImjPp2OjKPUkWO4BlAAolOStBNZ29Rhmzdugz2ajGwezxynE9Y9VCmN/VUpk03mH4sX7XEGLEizbaiiKLvU1OM835EcslNVfMzLNOwp5FtZIavnmO4AVE3uxIbMv9psnjBqrZpmtAylsKFhUU1vV5CWQt9jI1KHFHUu3F6D8tMM1WuAi6qyIDhMS5QwTJ30TBSUuIC7t97Ew7LnCJRqa2iGCgdjOcKi4+RRlUrzzxqO21+CJlhOL56DQ/zlLaUFtWuLykqkMTOJ+o+MdiqxBiWcknsvwrVU/lVHW+k7dBrOpiTPZ+j779TILEQBYn1AZtMoYm5qLD8qMEks4/p5TMs/djktdFmA/XiyVjXPvfVq3GXUxo6WDyL83ZQTyl3yG68sXTr3dCtngl6O8hcKi5DVidJMRVRWhcXuHjuINtTP3xo7+SW9NFJqelLt3TOIMUCmfzOd6uZDPQPYyg5UzU2+GtiPVIDBQfHEKqSZVInaOAxlWO2mI8BZ/ffp13Hw28FeOnmvaRDEcHj3TNna4qilEDCOZ1HwWVJyD/b5XlkIDXuxHndHo/HYoywjy/utZ6pYYwdBaasDyKffKybugpiz3nB2zfgu1AYcjv3cHuPZIj1bePbFeT718wb7qvuDyL76+8HvJG9kb2/W/3+bvX7m6VvZG9kb2QK2dN89v5u9fpY/5zf3FzzOqX570ZBb2RvZG9k/xCyZ2tB4v/2/+x9Vj/72/+bUHv0aG5/S/K3FWBTc3wY2Ts+eyN7I3sj+7eR/Q95O0lJJDt/2QAAAABJRU5ErkJggg==" class="h-8 mr-3" alt="FlowBite Logo" />
+           <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Lenny Bike Rentals</span>
+         </a>
+       </div>
+       <div class="flex items-center">
+           <div class="flex items-center ml-3">
+             <div>
+               <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                 <span class="sr-only">Open user menu</span>
+                 <img class="w-8 h-8 rounded-full" src="https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-vector-avatar-icon-png-image_695765.jpg" alt="user photo">
+               </button>
+             </div>
+             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
+               <div class="px-4 py-3" role="none">
+                 <p class="text-sm text-gray-900 dark:text-white" role="none">
+                   {{auth.user.first_name}}
+                 </p>
+                 <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
+                  {{auth.user.email}}
+                 </p>
+               </div>
+               <ul class="py-1" role="none">
+                 <li>
+                   <a href="/bikes" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Dashboard</a>
+                 </li>
+                 <li>
+                  <form action="/logout" method="post">
+                   <button type="submit" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</button>
+                  </form>
+                 </li>
+               </ul>
+             </div>
+           </div>
+         </div>
+     </div>
+   </div>
+ </nav>
+<button data-drawer-target="sidebar-multi-level-sidebar" data-drawer-toggle="sidebar-multi-level-sidebar" aria-controls="sidebar-multi-level-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+    <span class="sr-only">Open sidebar</span>
+    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+       <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+    </svg>
+ </button>
+ 
+ <aside id="sidebar-multi-level-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-300 dark:bg-gray-800">
+       <ul class="space-y-2 font-medium">
+          <li>
+             <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                   <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
+                   <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
+                </svg>
+                <span class="ml-3">Lennys Bike Rental</span>
+             </a>
+          </li>
+          <li>
+             <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z" />
+                </svg>
+                
+                   <span class="flex-1 ml-3 text-left whitespace-nowrap">Bikes</span>
+                   <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                   </svg>
+             </button>
+
+             <ul id="dropdown-example" class="hidden py-2 space-y-2">
+                   <li>
+                      <a href="/bikes" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">List Bikes</a>
+                   </li>
+                   <li>
+                      <a href="/bikes/create" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Add Bikes</a>
+                   </li>
+
+             </ul>
+          </li>
+          <li>
+
+         <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example2" data-collapse-toggle="dropdown-example2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z" />
+               </svg>
+               
+                  <span class="flex-1 ml-3 text-left whitespace-nowrap">Rentals</span>
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                  </svg>
+            </button>
+          
+            <ul id="dropdown-example2" class="hidden py-2 space-y-2">
+              <li>
+                 <a href="/rentals/create" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Rent Bike</a>
+              </li>
+              <li>
+                 <a href="/rentals" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">List Rentals</a>
+              </li>
+
+        </ul>
+         </li>
+
+         <li>
+
+            <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example3" data-collapse-toggle="dropdown-example3">
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+                </svg>
+                  
+                     <span class="flex-1 ml-3 text-left whitespace-nowrap">Payments</span>
+                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                     </svg>
+               </button>
+             
+               <ul id="dropdown-example3" class="hidden py-2 space-y-2">
+                 <li>
+                    <a href="/rentals" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Make Payments</a>
+                 </li>
+                 <li>
+                    <a href="/rentals/create" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">List payments</a>
+                 </li>
+   
+           </ul>
+            </li>
+          <li>
+             <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                   <path d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z"/>
+                </svg>
+                <span class="flex-1 ml-3 whitespace-nowrap">Rentals</span>
+                <span class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
+             </a>
+          </li>
+          <li>
+             <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                   <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
+                </svg>
+                <span class="flex-1 ml-3 whitespace-nowrap">Users</span>
+             </a>
+          </li>
+          {{--  <li>
+             <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+                   <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z"/>
+                </svg>
+                <span class="flex-1 ml-3 whitespace-nowrap">Products</span>
+             </a>
+          </li>  --}}
+        
+          <li>
+            <form action="/logout" method="post">
+             <button type="submit" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                </svg>
+                
+                <span class="flex-1 ml-3 whitespace-nowrap">Logout</span>
+             </button>
+            </form>
+          </li>
+       </ul>
+       
+    </div>
+ </aside>
+ 
+ <div class="p-4 mt-20 sm:ml-64">
+   {{{ await $slots.main() }}}
+ </div>
+ 

@@ -8,6 +8,7 @@ export default class extends BaseSchema {
       table.increments('id')
       table.integer('bike_id').unsigned().references('id').inTable('bikes').onDelete('CASCADE').onUpdate('CASCADE')
       table.integer('user_id').unsigned().references('id').inTable('users').onDelete('CASCADE').onUpdate('CASCADE')
+      table.enum('payment_status' , ['PAID', 'PENDING'])
       table.date('rental_start')
       table.date('rental_end')
       table.timestamp('created_at', { useTz: true })

@@ -21,6 +21,7 @@ import Env from "@ioc:Adonis/Core/Env"
 import './bikes/routes'
 import './auth/auth'
 import './clients/routes'
+import './dashboard/routes'
 import './rentals/routes'
 import Route from '@ioc:Adonis/Core/Route'
 import Database from '@ioc:Adonis/Lucid/Database'
