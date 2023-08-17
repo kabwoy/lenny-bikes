@@ -12,6 +12,12 @@ export default class Payment extends BaseModel {
   public rental_id: number;
 
   @column()
+  reciept_number:string
+
+  @column()
+  transaction_date:DateTime
+
+  @column()
   public amount: number;
 
   @column.dateTime({ autoCreate: true })

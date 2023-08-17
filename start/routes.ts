@@ -26,7 +26,7 @@ import './rentals/routes'
 import Route from '@ioc:Adonis/Core/Route'
 import Database from '@ioc:Adonis/Lucid/Database'
 
-Route.get('/', async ({ view  , session}) => {
+Route.get('/', async ({ view }) => {
   const bikes = await Database.from('bikes').paginate(1,3)
   return view.render('home' , {bikes:bikes})
 })

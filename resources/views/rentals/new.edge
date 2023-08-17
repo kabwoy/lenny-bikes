@@ -2,17 +2,24 @@
 
 <body>
 
+    @if(flashMessages.has('success_rent'))
+
+    @!component('components/toast',{
+        title:flashMessages.get('success_rent')
+    })
+      
+    @end
     @component('components/sidebar')
     @!component('components/alert' , {
     title:"Rent Bike ",
     })
 
-    <form method="post" action="/bikes" class="ml-[30%]">
+    <form method="post" action="/rentals" class="ml-[30%]">
         <div class="mb-6">
             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bike</label>
             <select name="bike_id" id="" class=" w-[48%] shadow-sm bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">
                 @each(bike in bikes)
-                <option value="{{bike.id}}">{{bike.name}}</option>
+                <option {{bike.status == 'BOOKED' ? 'disabled' : ''}} value="{{bike.id}}">{{bike.name}}</option>
                 @end
             </select>
         </div>
@@ -27,25 +34,25 @@
         </div>
         
         <div class="mb-6">
-            <label for="image_url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start Date</label>
-            <input type="date" id="rental_start" name="rental_start"
+            <label for="rental_start" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start Date</label>
+            <input type="date" id="rental_start" min="2023-08-16" name="rental_start"
                 class="w-[48%] shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                 required>
         </div>
         
         <div class="mb-6">
-            <label for="image_url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">End Date</label>
+            <label for="rental_end" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">End Date</label>
             <input type="date" id="rental_end" name="rental_end"
+                min="2023-08-16"
                 class="w-[48%] shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                 required>
         </div>
         <div class="mb-6">
             <label for="type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Payment Status</label>
-            <select name="user_id" id="user_id" class=" w-[48%] shadow-sm bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">
+            <select name="payment_status" id="" class=" w-[48%] shadow-sm bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">
                
                 <option value="PENDING">PENDING</option>
                 <option value="PAID">PAID</option>
-             
                 
             </select>
         </div>
@@ -59,4 +66,14 @@
     </form>
     @end
 
+    <script >
+    const rental_start = document.getElementById("rental_start")
+    const rental_end = document.getElementById("rental_end")
+
+    const today = new Date().toISOString().split('T')[0];
+    rental_start.min = today;
+
+    const today2 = new Date().toISOString().split('T')[0];
+    rental_end.min = today2;
+    </script>
 </body>

@@ -3,16 +3,20 @@ import { BaseModel, BelongsTo, HasMany, belongsTo, column, hasMany } from "@ioc:
 import User from "./User";
 import Bike from "./Bike";
 import Payment from "./Payment";
+import { Status } from "./enums/payment_status";
 
 export default class Rental extends BaseModel {
   @column({ isPrimary: true })
   public id: number;
 
   @column()
-  user_id: number;
+  userId: number;
 
   @column()
-  bike_id: number;
+  bikeId: number;
+  
+  @column()
+  payment_status:Status
 
   @column()
   rental_start: DateTime;

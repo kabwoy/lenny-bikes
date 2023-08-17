@@ -3,7 +3,7 @@ import axios from 'axios'
 import Env from "@ioc:Adonis/Core/Env"
 import fs from 'node:fs'
 export default class Gettoken {
-  public async handle({}: HttpContextContract, next: () => Promise<void>) {
+  public async handle({response}: HttpContextContract, next: () => Promise<void>) {
     // code for middleware goes here. ABOVE THE NEXT CALL
     const consumerKey = Env.get('CONSUMER_KEY')
     const consumerSecret = Env.get('CONSUMER_SECRET')
@@ -15,8 +15,9 @@ export default class Gettoken {
           Authorization:`Basic ${basicKey}`
          }
         }
-      ).then((response)=>{
-        fs.writeFileSync('token.txt' , response.data.access_token)
+      ).then((res)=>{
+        response.cookie('token' ,res.data.access_token)
+        fs.writeFileSync('token.txt' , res.data.access_token)
       }).catch((e)=>{
         console.error(e);  
       })

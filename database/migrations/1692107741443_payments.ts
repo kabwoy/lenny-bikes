@@ -9,6 +9,8 @@ export default class extends BaseSchema {
       table.integer("rental_id").unsigned().references('id').inTable('rentals').onDelete('CASCADE').onUpdate('CASCADE')
       table.integer('user_id').unsigned().references('id').inTable('users').onDelete('CASCADE').onUpdate('CASCADE')
       table.integer("amount").notNullable()
+      table.text("reciept_number")
+      table.dateTime("transaction_date")
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
     })
