@@ -1,7 +1,83 @@
 @include('partials/head')
 
 <body>
-    @component('components/sidebar')
+
+   
+    @if(flashMessages.has('success_rent'))
+
+    @!component('components/toast',{
+        title:flashMessages.get('success_rent')
+    })
       
     @end
+    @component('components/sidebar')
+    @!component('components/alert' , {
+    title:"Update Rent",
+    })
+
+
+    <form method="post" action="/rentals/{{editedRental.id}}?_method=PATCH" class="ml-[30%]">
+        <div class="mb-6">
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bike</label>
+            <select name="bike_id" id="" class=" w-[48%] shadow-sm bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">
+                @each(bike in bikes)
+                <option  {{editedRental.bike_id == bike.id ? 'selected' : ''}} {{bike.status == 'BOOKED' ? 'disabled' : ''}} value="{{bike.id}}">{{bike.name}}</option>
+                @end
+            </select>
+        </div>
+        <div class="mb-6">
+            <label for="type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Customers</label>
+            <select name="user_id" id="user_id" class=" w-[48%] shadow-sm bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">
+                @each(user in users)
+                <option {{editedRental.user_id == user.id ? 'selected' : '' }} value="{{user.id}}">{{user.first_name}} | {{user.email}}</option>
+                @end
+                
+            </select>
+        </div>
+        
+        <div class="mb-6">
+            <label for="rental_start" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start Date</label>
+            <input type="date" id="rental_start" min="2023-08-16" name="rental_start"
+            value="{{editedRental.rental_start}}"
+                class="w-[48%] shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                required>
+        </div>
+        
+        <div class="mb-6">
+            <label for="rental_end" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">End Date</label>
+            <input type="date" id="rental_end" name="rental_end"
+                min="2023-08-16"
+                value="{{editedRental.rental_end}}"
+                class="w-[48%] shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                required>
+        </div>
+        <div class="mb-6">
+            <label for="type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Payment Status</label>
+            <select name="payment_status" id="" class=" w-[48%] shadow-sm bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">
+               
+                <option value="PENDING">PENDING</option>
+                <option value="PAID">PAID</option>
+                
+            </select>
+        </div>
+        <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-400 to-blue-600 group-hover:from-red-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+            <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+               Update Rent
+            </span>
+          </button>
+        </div>
+      
+    </form>
+    @end
+
+    <script >
+    const rental_start = document.getElementById("rental_start")
+    const rental_end = document.getElementById("rental_end")
+
+    const today = new Date().toISOString().split('T')[0];
+    rental_start.min = today;
+
+    const today2 = new Date().toISOString().split('T')[0];
+    rental_end.min = today2;
+    </script>
 </body>

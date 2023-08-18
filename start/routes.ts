@@ -17,7 +17,7 @@
 | import './routes/customer''
 |
 */
-import Env from "@ioc:Adonis/Core/Env"
+
 import './bikes/routes'
 import './auth/auth'
 import './clients/routes'

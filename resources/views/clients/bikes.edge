@@ -1,7 +1,11 @@
 @include('partials/head')
 
 <body>
-   
+    @if(flashMessages.has('completed'))
+    @!component('components/toast' , {
+        title:flashMessages.get('completed')
+    })
+    @end
     @include('partials/navbar')
 
     <section>

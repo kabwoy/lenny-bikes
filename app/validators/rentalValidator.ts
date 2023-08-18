@@ -21,11 +21,11 @@ export function useRentalValidator(){
     })
 
     const rentalAdminUpdateSchema = schema.create({
-        rental_start:schema.date.optional(),
+        rental_start:schema.date.optional({format:'yyyy-MM-dd'}),
         user_id:schema.number.optional(),
         bike_id:schema.number.optional(),
-        rental_end:schema.date.optional(),
-        payment_status:schema.string.optional()
+        rental_end:schema.date.optional({format:'yyyy-MM-dd'} ),
+        payment_status:schema.enum.optional(['PAID' , 'PENDING'])
     })
 
     return {rentalCreateSchema ,rentalUpdateSchema , rentalAdminCreateSchema , rentalAdminUpdateSchema}

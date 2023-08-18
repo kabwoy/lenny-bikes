@@ -9,23 +9,32 @@ Route.get("/client/checkout/:bikeid" , "RentalsController.checkout").middleware(
 
 Route.post("/client/rent/:bikeid" , "RentalsController.rent").middleware(['auth'])
 
+Route.resource("/rentals" , 'RentalsController')
+
+
+
 Route.post("/callback" , async({request , response }:HttpContextContract)=>{
     let rentalDetails = fs.readFileSync('rental.txt').toString()
     const parsed = JSON.parse(rentalDetails)
     console.log(request.body().Body);
     console.log(+parsed.user_id);
     
+    
     if(request.body().Body.stkCallback.ResultCode === 1032 ){
+      
         return console.log("Transaction Failed Or Cancelled");
         
     }
     const Items = request.body().Body.stkCallback.CallbackMetadata.Item
+    console.log(Items);
+    
     await Payment.create({
-        reciept_number:Items[1].Value,
-        amount:Items[0].Value,
-        transaction_date:Items[3].Value,
         user_id:+parsed.user_id,
-        rental_id:+parsed.rental_id
+        rental_id:+parsed.rental_id,
+        amount:Items[0].Value,
+        reciept_number:Items[1].Value,
+        transaction_date:Items[2].Value,
+   
     })
 
     const rental = await Rental.find(+parsed.rental_id)
@@ -42,9 +51,17 @@ Route.post("/callback" , async({request , response }:HttpContextContract)=>{
     { Name: 'TransactionDate', Value: 20230817103356 },
     { Name: 'PhoneNumber', Value: 254758262427 }
   ]
+   // if kuna fuliza think so 
+  [
+  { Name: 'Amount', Value: 1 },
+  { Name: 'MpesaReceiptNumber', Value: 'RHI0FBEO5Q' },
+  { Name: 'TransactionDate', Value: 20230818133551 },
+  { Name: 'PhoneNumber', Value: 254758262427 }
+]
+
 }*/
    
     
 })
 
-Route.resource("/rentals" , 'RentalsController')
+// Route.resource("/rentals" , 'RentalsController')

@@ -8,7 +8,6 @@ import User from "App/Models/User";
 import Env from "@ioc:Adonis/Core/Env"
 import Rental from "App/Models/Rental";
 import fs from 'node:fs/promises'
-import { Request } from "@adonisjs/core/build/standalone";
 
 export default class RentalsController {
   public async checkout({ view, request }: HttpContextContract) {
@@ -43,7 +42,7 @@ export default class RentalsController {
       PartyA: `${auth.user?.contact}`,
       PartyB: "174379",
       PhoneNumber: `${auth.user?.contact}`,
-      CallBackURL: "https://84f9-102-167-107-74.ngrok-free.app/callback",
+      CallBackURL: "https://3dba-197-232-61-246.ngrok-free.app/callback",
       AccountReference: "Test",
       TransactionDesc: "Test",
     };
@@ -165,18 +164,57 @@ export default class RentalsController {
       console.log(e);
     }
   }
-  public async show(){
+  // public async show(){
     
+  // }
+  public async edit({view , request}:HttpContextContract){
+    const rentalId = request.params().id
+    try{
+      const bikes = await Bike.all()
+      const users = await User.all()
+      const updateRental = await Rental.find(+rentalId)
+      const editedRental = {id:updateRental?.id, user_id:updateRental?.userId ,rental_start:moment(updateRental?.rental_start).format("yyyy-MM-DD") ,  bike_id:updateRental?.bikeId , rental_end:moment(updateRental?.rental_end).format("yyyy-MM-DD")}
+      console.log(editedRental);
+      
+      return view.render("rentals/edit" , {bikes , users , editedRental})
+    }catch(e){
+      console.log(e);  
+    }
+    
+   
   }
-  public async edit(){
-    
+  public async update({ request, response }: HttpContextContract) {
+    const rentalId = request.params().id
+    const { rentalAdminUpdateSchema } = useRentalValidator()
+
+    try {
+      const rental = await Rental.find(+rentalId)
+
+      if (!rental) {
+        return response.status(404).send('Rental not found')
+      }
+
+      const rentalPayload = await request.validate({ schema: rentalAdminUpdateSchema })
+
+
+     await Database.from("rentals").where('id' , rentalId).update({...rentalPayload , rental_start:rentalPayload.rental_start?.toJSDate() , rental_end:rentalPayload.rental_end?.toJSDate()})
+
+      return response.redirect('/rentals')
+    } catch (error) {
+      console.error(error)
+      return response.status(500).send('An error occurred')
+    }
   }
 
-  public async update(){
-    
-  }
 
-  public async destroy(){
-    
+  public async destroy({ request, response }: HttpContextContract){
+    const rentalId = request.params().id
+    try {
+      const rental = await Rental.find(+rentalId)
+      await rental?.delete()
+      response.redirect('back')
+    } catch (error) {
+      response.badRequest(error)
+    }
   }
 }

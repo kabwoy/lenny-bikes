@@ -24,7 +24,6 @@ export default class AuthController {
 
   public async login({
     request,
-    view,
     session,
     response,
     auth,

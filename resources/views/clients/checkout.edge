@@ -60,7 +60,7 @@
                     <div class="mt-8">
                         <input
                             class="border border-gray-300 p-4 rounded w-full text-base leading-4 placeholder-gray-600 text-gray-600"
-                            type="email" name="" id="" value="{{auth.user.email}}"/>
+                            type="email" name="" id="" disabled value="{{auth.user.email}}"/>
                     </div>
 
                     <label class="mt-8 text-base leading-4 text-gray-800 dark:text-gray-50">Contact Number</label>
@@ -68,6 +68,7 @@
                         <div>
                             <input
                                 id="contact"
+                                disabled
                                 class="border rounded border-gray-300 p-4 w-full text-base leading-4 placeholder-gray-600 text-gray-600"
                                 type="text" name="contact" id="" value="{{auth.user.contact}}" />
                         </div>
@@ -88,12 +89,13 @@
                     </div>
 
                     <button
+                        disabled
                         type="button"
                         id="price-btn"
                         data-modal-target="popup-modal" data-modal-toggle="popup-modal" 
                         class="mt-8 border border-transparent hover:border-gray-300 dark:bg-white dark:hover:bg-gray-900 dark:text-gray-900 dark:hover:text-white dark:border-transparent bg-gray-900 hover:bg-white text-white hover:text-gray-900 flex justify-center items-center py-4 rounded w-full">
                         <div>
-                            <p class="text-base  leading-4">Pay ksh <span id="price">0</span></p>
+                            <p class="text-base  leading-4">Book && Pay ksh <span id="price">0</span></p>
                         </div>
                     </button>
                     <div id="popup-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -153,14 +155,16 @@
             const endDate= moment(e.target.value);
             const daysPrice = endDate.diff(startDate , 'days') * 1500
             if(daysPrice<=0){
-                price.textContent = 1500
+                price.textContent = ''
                 price_modal.textContent = 0
-                // price_btn.disabled = true
-                // price_modal.disabled = true
-              
+                price_btn.disabled = true
+                price_modal.disabled = true
+                
             }
                 price.textContent = daysPrice
                 price_modal.textContent = daysPrice
+                price_btn.disabled = false
+                price_modal.disabled = false
     })
     })
 

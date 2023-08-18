@@ -30,10 +30,6 @@ import User from 'App/Models/User'
 | NOTE: Always export the "actions" const from this file
 |****************************************************************
 */
-enum Roles{
-    ADMIN = 'ADMIN',
-    CUSTOMER = 'CUSTOMER'
-}
 export const { actions } = Bouncer
 .define('viewDashBoard' , (user:User)=>{
 
