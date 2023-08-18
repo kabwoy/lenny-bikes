@@ -3,7 +3,7 @@ import Bike from "App/Models/Bike";
 import { useBikeValidator } from "App/validators/bikeValidator";
 
 export default class BikesController {
-  public async index({ view, auth, bouncer, response }: HttpContextContract) {
+  public async index({ view,  bouncer, response }: HttpContextContract) {
     // await auth.use("web").authenticate()
     try {
       await bouncer.authorize("viewDashBoard");

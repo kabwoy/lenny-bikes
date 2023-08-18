@@ -21,7 +21,4 @@ export default class extends BaseSchema {
   }
 }
 
-enum STATUS{
-  BOOKED,
-  FREE
-}
+
