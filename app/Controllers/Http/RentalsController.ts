@@ -8,6 +8,7 @@ import User from "App/Models/User";
 import Env from "@ioc:Adonis/Core/Env"
 import Rental from "App/Models/Rental";
 import fs from 'node:fs/promises'
+import View from '@ioc:Adonis/Core/View'
 
 export default class RentalsController {
   public async checkout({ view, request }: HttpContextContract) {
@@ -42,7 +43,7 @@ export default class RentalsController {
       PartyA: `${auth.user?.contact}`,
       PartyB: "174379",
       PhoneNumber: `${auth.user?.contact}`,
-      CallBackURL: "https://3dba-197-232-61-246.ngrok-free.app/callback",
+      CallBackURL: "https://ficus.serveo.net/callback",
       AccountReference: "Test",
       TransactionDesc: "Test",
     };
@@ -164,9 +165,25 @@ export default class RentalsController {
       console.log(e);
     }
   }
-  // public async show(){
+  public async show({request , response}:HttpContextContract){
+    const rentalId = request.params().id
+    console.log(rentalId);
     
-  // }
+    try{
+      const rental = await Rental.find(rentalId)
+      const user = await User.find(rental?.userId)
+      // const user = await Rental.query().preload("user" , (userQuery)=>{
+      //     userQuery.where('id' , rental!.userId)
+      // })
+      // console.log(user);
+       View.global('globalRental' , rental)
+       View.global('globalUser' , user)
+       return response.json({msg:"global set"})
+       
+    }catch(e){
+      return response.badRequest(e)
+    }
+  }
   public async edit({view , request}:HttpContextContract){
     const rentalId = request.params().id
     try{
