@@ -1,5 +1,7 @@
 import type { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
+import View from "@ioc:Adonis/Core/View";
 import Bike from "App/Models/Bike";
+import Rental from "App/Models/Rental";
 import { useBikeValidator } from "App/validators/bikeValidator";
 
 export default class BikesController {
@@ -7,6 +9,8 @@ export default class BikesController {
     // await auth.use("web").authenticate()
     try {
       await bouncer.authorize("viewDashBoard");
+      const rentalLength = (await Rental.all()).length
+      View.global("rentalLength" , rentalLength)
     } catch (e) {
       return response.redirect("/unauthorized");
     }

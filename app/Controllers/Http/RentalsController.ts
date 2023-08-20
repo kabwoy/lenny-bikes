@@ -49,7 +49,7 @@ export default class RentalsController {
     };
     try {
       const token = await this.getToken();
-      console.log(token);
+      session.flash('processing' , 'true')
       await axios.post(
         "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
         reqBody,
@@ -59,7 +59,7 @@ export default class RentalsController {
           },
         }
       );
-
+      session.flash('processing' , '')
       const { rentalCreateSchema } = useRentalValidator();
       const rentalPayload = await request.validate({
         schema: rentalCreateSchema,
@@ -96,7 +96,8 @@ export default class RentalsController {
       session.flash("completed", "Transaction Completed Successfully");
       return response.redirect("/client/bikes");
     } catch (e) {
-      console.error(e.message);
+      return response.badRequest(e)
+      // console.error(e.message);
     }
   }
 
@@ -121,6 +122,19 @@ export default class RentalsController {
     }
   
 
+  }
+
+  public async search({request , response}:HttpContextContract){
+    try{
+      const result = await Database.from("rentals")
+      .leftJoin('users','rentals.user_id' ,'users.id')
+      .leftJoin('bikes' , 'rentals.bike_id' , 'bikes.id')
+      .where("users.email" , 'LIKE' , `%${request.qs().email}%`)
+      .select("rentals.*" , 'users.email' , 'users.first_name' , 'bikes.name')      
+      return response.json(result)
+    }catch(e){
+      return response.json(e)
+    }
   }
   //------------------------------------------- CRUD FOR RENTALS -----------------------------------------------------------------------------//
   public async index({view}:HttpContextContract){

@@ -29,8 +29,8 @@ Route.post("/callback" , async({request , response }:HttpContextContract)=>{
     console.log(Items);
     
     await Payment.create({
-        user_id:+parsed.user_id,
-        rental_id:+parsed.rental_id,
+        userId:+parsed.user_id,
+        rentalId:+parsed.rental_id,
         amount:Items[0].Value,
         reciept_number:Items[1].Value,
         transaction_date:Items[2].Value,
@@ -65,3 +65,5 @@ Route.post("/callback" , async({request , response }:HttpContextContract)=>{
 })
 
 // Route.resource("/rentals" , 'RentalsController')
+
+Route.get("/search" , 'RentalsController.search')

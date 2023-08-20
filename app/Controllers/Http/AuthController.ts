@@ -3,15 +3,21 @@ import User from "App/Models/User";
 import Hash from "@ioc:Adonis/Core/Hash";
 import { useAuthValidator } from "App/validators/authValidator";
 
+
 export default class AuthController {
   public async signUpPage({ view }: HttpContextContract) {
     return view.render("auth/signup");
   }
 
-  public async signUp({ request, response }: HttpContextContract) {
+  public async signUp({ request, response  , session}: HttpContextContract) {
     try {
       const { signupSchema } = useAuthValidator();
       const userPayload = await request.validate({ schema: signupSchema });
+      const existingUser = await User.findBy('email' , userPayload.email)
+      if(existingUser){
+        session.flash("existingUser" , "user with this email already exists")
+        return response.redirect('back')
+      }
       await User.create(userPayload);
       response.redirect("/auth/login");
     } catch (e) {

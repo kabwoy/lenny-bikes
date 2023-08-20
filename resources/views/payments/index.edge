@@ -1,0 +1,103 @@
+@include('partials/head')
+
+<body>
+    @include('partials/head')
+
+    <body>
+        @component('components/sidebar')
+          
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div class="flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
+          
+            <label for="table-search" class="sr-only">Search</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>
+                </div>
+                <input type="text" id="table-search" class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search">
+            </div>
+        </div>
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-white uppercase bg-black dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                   
+                    <th scope="col" class="px-6 py-3">
+                        Customer
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Rental Id
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Amount
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Reciept Number
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Transaction Date
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @each(payment in payments)
+                  
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                  
+                    <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                       
+                        <div class="pl-3">
+                            <div class="text-base font-semibold">{{payment.user.first_name}}</div>
+                            <div data-user_email="{{payment.user.email}}" class="font-normal user_email text-gray-500">{{payment.user.email}}</div>
+                        </div>  
+                    </th>
+                    <td class="px-6 py-4">
+                        {{payment.rental.id}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{payment.amount}}
+                      
+                    </td>
+                    <td class="px-6 py-4">
+                    {{payment.reciept_number}}
+                     
+                    </td>
+                    <td class="px-6 py-4">
+                        {{payment.transaction_date.toString().split("00:")[0]}}
+                    </td>
+                    <td class="px-6 py-4 flex">
+                        <a href="/payments/{{payment.id}}/edit"  class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Edit Payment</a>
+            
+                       
+                        <form  method="post" action="/payments/{{payment.id}}?_method=DELETE">
+                        <button type="submit" class="text-white flex bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                              </svg>
+                              
+                            Delete
+                        </button>
+                    </form>
+                    </td>
+                </tr>
+                @end
+            </tbody>
+        </table>
+    </div>
+    
+    
+      
+        @end
+    
+        <script>
+        
+            const searchInput = document.getElementById("table-search")
+            console.log(searchInput);
+        
+        </script>
+    </body>
+</body>
