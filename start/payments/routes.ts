@@ -19,3 +19,5 @@ Route.get("/payments/form/:id" , async({request, response , view}:HttpContextCon
     }
 
 })
+
+Route.get("/payments-search" , 'PaymentsController.search')

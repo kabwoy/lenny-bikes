@@ -75,4 +75,21 @@ export default class PaymentsController {
       return response.badRequest(error);
     }
   }
+
+  public async search({request , response}:HttpContextContract){
+    const reciept = request.qs().reciept
+    try {
+      const payments = await Database.from("payments")
+      .leftJoin('users' , 'payments.user_id' , 'users.id')
+      .where('reciept_number' , 'LIKE' , `%${reciept}%`)
+      .select('payments.*' , 'users.first_name' , 'users.email')
+      console.log(payments);
+  
+      return response.json(payments)
+    } catch (error) {
+      return response.badRequest(error)
+    }
+  }
 }
+
+

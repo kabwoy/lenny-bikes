@@ -12,7 +12,15 @@ export default class CustomersController {
     }
   }
 
-  public async create({ response, request }: HttpContextContract) {
+  public async create({ response, request , view }: HttpContextContract) {
+    try { 
+     return view.render("users/new");
+    } catch (e) {
+      return response.badRequest(e);
+    }
+  }
+
+  public async store ({ response, request }: HttpContextContract){
     try {
       const { signupSchema } = useAuthValidator();
       const customerPayload = await request.validate({ schema: signupSchema });
@@ -62,7 +70,7 @@ export default class CustomersController {
         schema: userUpdateSchema,
       });
       const user = await User.find(+userId);
-      await user?.merge({ ...customerPayload });
+      await user?.merge({ ...customerPayload }).save();
       return response.redirect("/users");
     } catch (e) {
       return response.badRequest(e);
