@@ -72,7 +72,7 @@ Route.get('/payments/:id/reciept', async ({ view , response  , request}) => {
       <th>Total</th>
       </tr>
       <tr>
-        <td>Ksh ${bike?.name}</td>
+        <td>${bike?.name}</td>
         <td>Ksh ${payment?.amount}</td>
         <td>${payment?.reciept_number}</td>
         <td>Ksh ${payment?.amount}</td>
