@@ -11,8 +11,8 @@ export default class extends BaseSchema {
       table.integer("amount").notNullable()
       table.text("reciept_number")
       table.dateTime("transaction_date")
-      table.timestamp('created_at', { useTz: true })
-      table.timestamp('updated_at', { useTz: true })
+      table.timestamp('created_at', { useTz: true }).defaultTo(this.now())
+      table.timestamp('updated_at', { useTz: true }).defaultTo(this.now())
     })
   }
 

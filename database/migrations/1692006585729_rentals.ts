@@ -11,8 +11,8 @@ export default class extends BaseSchema {
       table.enum('payment_status' , ['PAID', 'PENDING']).defaultTo('PENDING')
       table.date('rental_start')
       table.date('rental_end')
-      table.timestamp('created_at', { useTz: true })
-      table.timestamp('updated_at', { useTz: true })
+      table.timestamp('created_at', { useTz: true }).defaultTo(this.now())
+      table.timestamp('updated_at', { useTz: true }).defaultTo(this.now())
     })
   }
   public async down () {

@@ -11,8 +11,8 @@ export default class extends BaseSchema {
       table.string('type')
       table.text("image_url")
       table.enum('status' , ['BOOKED' , 'FREE'] as const)
-      table.timestamp('created_at', { useTz: true })
-      table.timestamp('updated_at', { useTz: true })
+      table.timestamp('created_at').defaultTo(this.now())
+      table.timestamp('updated_at').defaultTo(this.now())
     })
   }
 

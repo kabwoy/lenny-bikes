@@ -31,5 +31,4 @@ export default Env.rules({
 	DB_CONNECTION:Env.schema.string(),
 	CONSUMER_KEY:Env.schema.string(),
 	CONSUMER_SECRET:Env.schema.string(),
-	ACCESS_TOKEN:Env.schema.string()
 })

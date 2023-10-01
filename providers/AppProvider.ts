@@ -5,7 +5,7 @@ export default class AppProvider {
   }
 
   public register () {
-    // Register your own bindings
+    console.log(1+1)
   }
 
   public async boot () {
